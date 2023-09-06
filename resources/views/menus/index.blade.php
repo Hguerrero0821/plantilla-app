@@ -23,7 +23,28 @@
                                     @foreach ($menus as $menu)
                                     <tr>
                                         <td style="display: none">{{$menu->id}}</td>
-                                        <td>{{$menu->name}}</td>
+
+                                        <td>
+                                            <a
+                                            data-toggle="collapse"
+                                            href="#submenuCollapse{{$menu->id}}">
+                                                {{$menu->name}}
+                                            </a>
+                                            <div class="collapse" id="submenuCollapse{{$menu->id}}">
+                                                <div class="flex">
+                                                    <div class="card card-body">
+                                                        <h6>Submenus:</h6>
+                                                        @foreach ( $menu->submenu as $item )
+                                                        <li>
+                                                            {{$item->name}}
+                                                        </li>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </td>
+
                                         <td>{{$menu->description}}</td>
                                         <td>
                                             <a href="{{route('menus.edit',$menu->id)}}" class="btn btn-warning">

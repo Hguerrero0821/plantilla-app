@@ -20,10 +20,13 @@ class rolesUsuarios extends Model implements Auditable
     protected $primaryKey = ['user_id', 'rol_id'];
 
     public function roles() {
+
         return $this->belongsToOne(roles::class);
     }
 
-    public function usuarios() {
-        return $this->belongsToOne(User::class);
+    public function usuario() {
+
+        return $this->hasOne(User::class, 'id','user_id');
+
     }
 }

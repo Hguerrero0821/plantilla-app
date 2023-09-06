@@ -46,7 +46,7 @@
 
                                         @foreach ($alert as $alt)
                                             <button type="submit" class="dropdown-item" style="border: none; background-color: transparent;">
-                                                <b>{{ $alt->user_id }} {{$alt->body}}</b>
+                                                <b>{{ $alt->usuarios->name }} </b> {{$alt->body}}
                                             </button>
                                         @endforeach
 
@@ -82,7 +82,31 @@
                             </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+
+                                <a href="#" class="btn btn-default btn-flat" data-toggle="modal" data-target="#miModal">
+                                    Profile
+                                </a>
+
+                                <div class="modal" id="miModal">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <!-- Contenido del modal -->
+                                        <div class="modal-header">
+                                          <h5 class="modal-title">Perfil del usuario</h5>
+                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <input type="text">
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+
+
                                 <a href="#" class="btn btn-default btn-flat float-right"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     Sign out

@@ -17,10 +17,14 @@ class roles extends Model implements Auditable
         'description'
     ];
 
-    public function rolesPermision() {
+    public function rolesUsuarios() {
 
-        return $this->hasMany('\App\Models\rol_permison');
+        return $this->hasMany(rolesUsuarios::class,'rol_id');
+    }
 
+    public function rolesSubmenus() {
+
+        return $this->hasMany(rolesSubmenus::class,'rol_id');
     }
 
 }

@@ -19,6 +19,6 @@ class menu extends Model implements Auditable
     ];
 
     public function submenu() {
-        return $this->hasMany('\App\Models\submenu');
+        return $this->hasMany(submenu::class,'menu_id');
     }
 }

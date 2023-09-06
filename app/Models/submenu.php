@@ -17,7 +17,8 @@ class submenu extends Model implements Auditable
         'url'
     ];
 
-    public function Menu() {
-        return $this->belongsToOne(menu::class);
+    public function menu()
+    {
+        return $this->belongsTo(menu::class);
     }
 }

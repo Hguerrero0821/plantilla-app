@@ -51,6 +51,8 @@
                                     <th>Url</th>
                                     <th>IP Address</th>
                                     <th>User Agent</th>
+                                    <th>Fecha de creado</th>
+                                    <th>Fecha de actualizado</th>
                                 </thead>
 
                                 <tbody>

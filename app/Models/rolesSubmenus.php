@@ -21,11 +21,13 @@ class rolesSubmenus extends Model implements Auditable
     protected $primaryKey = ['submenu_id', 'rol_id'];
 
     public function roles() {
+
         return $this->belongsToOne(roles::class);
     }
 
+
     public function submenus() {
-        return $this->belongsToOne(submenu::class);
+        return $this->hasOne(submenu::class, 'id','submenu_id');
     }
 
 }
