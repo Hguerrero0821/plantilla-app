@@ -52,7 +52,7 @@
                                                         <li>
                                                             {{ $item->submenus->name }}
                                                            <b>
-                                                            {{ $item->create ? '--> Crear' : ''}}
+                                                            {{ $item->create ? ' => Crear' : ''}}
                                                            </b>
                                                            <b>
                                                             {{ $item->edit ? '  Editar' : ''}}
