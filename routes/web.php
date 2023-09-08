@@ -3,6 +3,7 @@
 use App\Http\Controllers\auditingController;
 use App\Http\Controllers\menuController;
 use App\Http\Controllers\notificationController;
+use App\Http\Controllers\profileController;
 use App\Http\Controllers\rolesController;
 use App\Http\Controllers\userController;
 use App\Models\User;
@@ -33,6 +34,9 @@ Route::middleware(['roles'])->group( function() {
 
 });
 
+Route::get('profile', [ProfileController::class, 'create'])->name('profile.create');
+
+Route::post('profile', [ProfileController::class, 'store'])->name('profile.store');
 
 Route::resource('notification',notificationController::class);
 

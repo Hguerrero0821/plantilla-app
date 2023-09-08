@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Blade;
 use App\Models\notification;
 use App\Models\notification_old;
+use App\Models\profile;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -89,8 +90,12 @@ class AppServiceProvider extends ServiceProvider
             ->where('user_id', '=', Auth::user()->id ?? '')
             ->get();
 
+            $profile = profile::select('user_id','imagen')->where('user_id','=',Auth::user()->id ?? '' )->first();
+            // dd($profile);
+
             $view->with(['noty'=>$sql,
-            'noty_body' => $notification_body, 'alert' =>  $notify_old_message]);
+            'noty_body' => $notification_body, 'alert' =>  $notify_old_message,
+            'imagen' => $profile]);
 
         });
     }

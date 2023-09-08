@@ -21,6 +21,9 @@ class User extends Authenticatable  implements Auditable
      *
      * @var array<int, string>
      */
+
+    protected $table = 'users';
+
     protected $fillable = [
         'name',
         'email',
@@ -46,4 +49,9 @@ class User extends Authenticatable  implements Auditable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function profile()
+    {
+        return $this->hasOne(profile::class, 'user_id', 'id');
+    }
 }

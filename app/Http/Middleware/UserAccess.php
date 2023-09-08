@@ -20,10 +20,10 @@ class UserAccess
     public function handle(Request $request, Closure $next): Response
     {
 
-        // if (Auth::user() == null){
+        if (Auth::user() == null){
 
-        //     return $next($request); /* Si el usuario ya no tiene token de auth automaticamente se le mandara al login */
-        // }
+            return redirect('/login');
+        }
 
         $parcial_url = request()->segment(1);
         $rol_user = rolesUsuarios::where('user_id','=',Auth::user()->id)->get()->pluck('rol_id')->toArray();

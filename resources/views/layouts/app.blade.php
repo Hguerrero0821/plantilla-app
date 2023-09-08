@@ -65,7 +65,7 @@
 
                     <li class="nav-item dropdown user-menu">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            <img src="https://assets.infyom.com/logo/blue_logo_150x150.png"
+                            <img src="{{$imagen->imagen ?? '' }}"
                                 class="user-image img-circle elevation-2" alt="User Image">
                             <span class="d-none d-md-inline">{{ Auth::user()->name ?? ''}}</span>
                         </a>
@@ -73,47 +73,43 @@
                         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                             <!-- User image -->
                             <li class="user-header bg-primary">
-                                <img src="https://assets.infyom.com/logo/blue_logo_150x150.png"
-                                    class="img-circle elevation-2" alt="User Image">
+                                <img src="{{$imagen->imagen ?? '' }}"
+                                class="user-image img-circle elevation-2" alt="User Image">
                                 <p>
                                     {{ Auth::user()->name ?? ''}}
-                                    <small>Member since {{ Auth::user()->created_at->format('M. Y') }}</small>
+                                    <small> {{ Auth::user()->email }}</small>
                                 </p>
                             </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
 
-                                <a href="#" class="btn btn-default btn-flat" data-toggle="modal" data-target="#miModal">
+                                <a href="{{route('profile.create')}}" class="btn btn-default btn-flat">
                                     Profile
                                 </a>
 
-                                <div class="modal" id="miModal">
-                                    <div class="modal-dialog">
-                                      <div class="modal-content">
-                                        <!-- Contenido del modal -->
-                                        <div class="modal-header">
-                                          <h5 class="modal-title">Perfil del usuario</h5>
-                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        </div>
-                                        <div class="modal-body">
-                                          <input type="text">
-                                        </div>
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-
-
 
                                 <a href="#" class="btn btn-default btn-flat float-right"
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    onclick="confirmLogout(event)">
                                     Sign out
                                 </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
+
+                                <script>
+                                    function confirmLogout(event) {
+                                        event.preventDefault();
+
+                                        if (confirm('¿Estás seguro de que deseas cerrar la sesión?')) {
+                                            // Si el usuario confirma, envía el formulario de logout
+                                            document.getElementById('logout-form').submit();
+                                        } else {
+                                            // Si el usuario cancela, no hace nada
+                                        }
+                                    }
+                                </script>
+
                             </li>
                         </ul>
                     </li>
